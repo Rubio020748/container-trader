@@ -74,18 +74,6 @@ CONFIG_BY_SYMBOL = {
         "brick_size": 0.0020,          # Tamanho em % do preco (LTP %) (ex: 0.005 = 0.5%)
         "stop_loss_bricks": 5,
     },
-    "LINKUSDT": {
-        "brick_size": 0.0020,          # Tamanho em % do preco (LTP %) (ex: 0.005 = 0.5%)
-        "stop_loss_bricks": 5,
-    },
-    "NEARUSDT": {
-        "brick_size": 0.0020,          # Tamanho em % do preco (LTP %) (ex: 0.005 = 0.5%)
-        "stop_loss_bricks": 5,
-    },
-    "WLDUSDT": {
-        "brick_size": 0.0020,          # Tamanho em % do preco (LTP %) (ex: 0.005 = 0.5%)
-        "stop_loss_bricks": 5,
-    },
 }
 
 SYMBOLS = list(CONFIG_BY_SYMBOL.keys())

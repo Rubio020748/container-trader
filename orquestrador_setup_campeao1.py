@@ -75,18 +75,6 @@ CONFIG_BY_SYMBOL = {
         "brick_size": 0.0010,
         "stop_loss_bricks": 10,
     },
-    "LINKUSDT": {
-        "brick_size": 0.0010,
-        "stop_loss_bricks": 10,
-    },
-    "NEARUSDT": {
-        "brick_size": 0.0010,
-        "stop_loss_bricks": 10,
-    },
-    "WLDUSDT": {
-        "brick_size": 0.0010,
-        "stop_loss_bricks": 10,
-    },
 }
 
 SYMBOLS = list(CONFIG_BY_SYMBOL.keys())
