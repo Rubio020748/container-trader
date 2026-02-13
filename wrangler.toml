@@ -4,4 +4,4 @@ main = "orquestrador_setup_campeao1.py" # Certifique-se que o nome está idênti
 [[containers]]
 name = "trader-bot"
 image = "Dockerfile"
-class_name = "beta"
+class_name = "beta"  # Force update
