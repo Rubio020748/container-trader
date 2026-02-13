@@ -314,26 +314,39 @@ def monitor_processes():
             time.sleep(5)
 
 def main():
-    """Funcao principal do orquestrador."""
+    """Funcao principal: Inicia os 4 Bots Diferentes"""
     signal.signal(signal.SIGINT, signal_handler)
     signal.signal(signal.SIGTERM, signal_handler)
     
-    print_banner()
+    # Lista dos arquivos de bot que voce quer rodar
+    lista_de_bots = [
+        "bot_setup_campeao1.py",
+        "bot_setup_campeao2.py",
+        "bot_setup_campeao3.py",
+        "bot_setup_campeao5.py"
+    ]
     
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Iniciando {len(SYMBOLS)} bots...")
+    print("=" * 80)
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] INICIANDO OS 4 BOTS NO CLOUDFLARE...")
+    print("=" * 80)
     
-    for symbol in SYMBOLS:
-        proc = start_bot(symbol)
+    for script em lista_de_bots:
+        print(f"Lançando {script}...")
+        # Inicia cada script de bot como um processo separado
+        proc = subprocess.Popen([sys.executable, script])
         processes.append(proc)
-        print(f"[{datetime.now().strftime('%H:%M:%S')}] Bot {symbol} iniciado (PID: {proc.pid})")
-        time.sleep(1)
+        time.sleep(2) # Pequena pausa para nao sobrecarregar a conexao
     
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Todos os bots iniciados!")
-    print(f"[{datetime.now().strftime('%H:%M:%S')}] Logs salvos em: bot_logs/")
-    print()
+    print(f"[{datetime.now().strftime('%H:%M:%S')}] Todos os 4 bots estao operando!")
     
-    # Monitorar processos
-    monitor_processes()
+    # Mantem o orquestrador vivo monitorando os processos
+    while True:
+        for i, proc em enumerate(processes):
+            if proc.poll() is not None:
+                bot_nome = lista_de_bots[i]
+                print(f"ALERTA: {bot_nome} parou. Reiniciando...")
+                processes[i] = subprocess.Popen([sys.executable, bot_nome])
+        time.sleep(10)
 
 if __name__ == "__main__":
     main()
