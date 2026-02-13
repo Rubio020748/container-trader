@@ -1,11 +1,6 @@
 name = "container-trader"
-main = "orquestrador_setup_campeao1.py"
-compatibility_date = "2024-05-02"
-
-# Isso avisa a Cloudflare para ignorar comandos de build externos
-[build]
-command = ""
-
+main = "orquestrador_setup_campeao1.py" # Certifique-se que o nome está idêntico ao arquivo
+...
 [[containers]]
 name = "trader-bot"
 image = "Dockerfile"
